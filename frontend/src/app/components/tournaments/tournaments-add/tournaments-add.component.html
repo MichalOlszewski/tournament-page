@@ -1,0 +1,56 @@
+<h1 style="text-align: center;"> Dodawanie turnieju</h1>
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="container"> 
+
+        <mat-form-field>
+            <input matInput placeholder="Nazwa" formControlName="name">
+            <mat-hint *ngIf="addForm.controls.name.errors">Nazwa jest wymagana</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Dyscyplina" formControlName="discipline">
+            <mat-hint *ngIf="addForm.controls.discipline.errors">Dyscyplina jest wymagana</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Lokalizacja" formControlName="location">
+            <mat-hint *ngIf="addForm.controls.location.errors">Lokalizacja jest wymagana</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput  placeholder="Limit zgłoszeń" formControlName="limit">
+            <mat-hint *ngIf="addForm.controls.limit.errors">Limit zgłoszeń jest wymagany</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Liczba zawodników rozstawionych" formControlName="seeded_players">
+            <mat-hint *ngIf="addForm.controls.seeded_players.errors">Liczba zawodników rozstawionych jest wymagana</mat-hint>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field   class="example-full-width" appearance="fill">
+            <mat-label>Data turnieju</mat-label>
+            <input id="data" matInput [min]="minDate"  [matDatepicker]="picker" formControlName="data">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Deadline</mat-label>
+            <input matInput [min]="minDate" [matDatepicker]="picker2" formControlName="deadline">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+        <label for="input-file-id" class="md-button md-raised md-primary">Dodaj loga sponsorów</label>
+        <input class="ng-hide" id="input-file-id" multiple type="file" accept="image/*"/>
+        
+        <br>
+
+        <button mat-flat-button color="primary" [disabled]="addForm.invalid" type="submit">Dodaj</button>
+        <button mat-flat-button color="primary" routerLink="/tournaments">Wróć</button>
+    </div>
+
+    <h2 *ngIf="isAdded">Dodano turniej!</h2>
+</form>
+

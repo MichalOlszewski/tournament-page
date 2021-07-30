@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 *ngIf="!confirmed">
+        <p>Twoje konto zostało już aktywowane!</p>
+    </h1>
+
+    <h1 *ngIf="confirmed">
+        <p>Dziękujemy za potwierdzenie rejestracji!</p>
+    </h1>
+
+    <button mat-flat-button color="primary" (click)="onLoginClick()">Zaloguj się</button>
+
+</div>
+
+
+

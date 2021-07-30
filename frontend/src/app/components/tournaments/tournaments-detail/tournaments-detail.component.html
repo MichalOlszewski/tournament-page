@@ -1,0 +1,22 @@
+<div *ngIf="dataSource">
+  <mat-table [dataSource]="dataSource | keyvalue">
+      
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      <ng-container matColumnDef="key">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">{{myMap.get(row.key)}}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="value">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.value}}</mat-cell>
+      </ng-container>
+
+  </mat-table>
+
+  <button mat-flat-button color="primary" routerLink="/tournaments">Wróć</button>
+</div>
+
+ 

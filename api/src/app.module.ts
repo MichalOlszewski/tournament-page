@@ -1,0 +1,33 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { MailModule } from './mail/mail.module';
+import { TournamentModule } from './tournament/tournament.module';
+
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({isGlobal: true}),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'developer',
+      password: 'Developer3',
+      database: 'youtubedb',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+    UserModule,
+    AuthModule,
+    MailModule,
+    TournamentModule
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}

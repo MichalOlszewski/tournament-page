@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "02e48fb5-bd84-490e-b7f3-18ffc1c929d7",
+		"name": "Youtube-blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tomek\",\r\n    \"username\": \"tomek\",\r\n    \"email\": \"tomek@gmail.com\",\r\n    \"password\": \"tomek\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywibmFtZSI6IlRvbWVrIiwidXNlcm5hbWUiOiJ0b21layIsImVtYWlsIjoidG9tZWtAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTYyMzcwMTE4MCwiZXhwIjoxNjIzNzAxMjgwfQ.70DqG1a2Rd5OMG_ilaXtKmxgsHqU65UXWui-jBR0tnY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywibmFtZSI6IlRvbWVrIiwidXNlcm5hbWUiOiJkZGQiLCJlbWFpbCI6InRvbWVrQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsInByb2ZpbGVJbWFnZSI6IjIwMjAxMjE0XzEyNTcxMDAxOTNkZDMzLTkyZTMtNDEyNy04ZTQ1LTc2ZTI0YjU1NmJmMy5qcGcifSwiaWF0IjoxNjIzOTE3NjkwLCJleHAiOjE2MjM5MTc3OTB9.8Hk92vdFzn74Wigdk6wNXP0vZRg2rS1YYpv9qBr2-YQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tomek\",\r\n    \"username\": \"ddd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find One",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"email\": \"tomek@gmail.com\",\r\n    \"password\": \"tomek\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Role of User (Protected with JWT and Role)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywibmFtZSI6IlRvbWVrIiwidXNlcm5hbWUiOiJ0b21layIsImVtYWlsIjoidG9tZWtAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTYyMzcwMTE4MCwiZXhwIjoxNjIzNzAxMjgwfQ.70DqG1a2Rd5OMG_ilaXtKmxgsHqU65UXWui-jBR0tnY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/4/role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"4",
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users By Username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users?username=kAsi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "kAsi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Image",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywibmFtZSI6IlRvbWVrIiwidXNlcm5hbWUiOiJ0b21layIsImVtYWlsIjoidG9tZWtAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwicHJvZmlsZUltYWdlIjoiMjAyMDEyMTRfMTI1NzEwMDE5M2RkMzMtOTJlMy00MTI3LThlNDUtNzZlMjRiNTU2YmYzLmpwZyJ9LCJpYXQiOjE2MjM5MTY5NjQsImV4cCI6MTYyMzkxNzA2NH0.9299df7KBzJTLUtjka0Fr1jqE4QhjRN3S4U91rL8OFc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br, 7bit",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/michu/OneDrive/Pictures/Galeria Samsung/DCIM/Camera/20201214_125710.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Profile Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMywibmFtZSI6IlRvbWVrIiwidXNlcm5hbWUiOiJ0b21layIsImVtYWlsIjoidG9tZWtAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwicHJvZmlsZUltYWdlIjoiMjAyMDEyMTRfMTI1NzEwMDE5M2RkMzMtOTJlMy00MTI3LThlNDUtNzZlMjRiNTU2YmYzLmpwZyJ9LCJpYXQiOjE2MjM4NzEyMDAsImV4cCI6MTYyMzg3MTMwMH0.Bkpa8c0MWauEK31x8-7EmIh3KdWiB6wquZL1-b3GZlE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/profile-image/20201214_1257100193dd33-92e3-4127-8e45-76e24b556bf3.jpg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"profile-image",
+						"20201214_1257100193dd33-92e3-4127-8e45-76e24b556bf3.jpg"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

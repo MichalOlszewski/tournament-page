@@ -1,0 +1,41 @@
+<h1 style="text-align: center;">Turnieje</h1>
+
+<mat-form-field>
+    <mat-label>Filtruj po nazwie turnieju</mat-label>
+    <input matInput type="text" [(ngModel)]="filterValue"
+    (input)="findByName(filterValue)" placeholder="Wpisz nazwę turnieju">
+</mat-form-field>
+
+
+<div *ngIf="dataSource">
+    <mat-table [dataSource]="dataSource.items">
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="getRecord(row)" [routerLink]="['/tournaments/details/', row.id]"></mat-row>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Nazwa</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="organizer">
+            <mat-header-cell *matHeaderCellDef>Organizator</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.organizer}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="discipline">
+            <mat-header-cell *matHeaderCellDef>Dyscyplina</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.discipline}}</mat-cell>
+        </ng-container>
+
+
+    </mat-table>
+    <mat-paginator 
+        [length]="dataSource.meta.totalItems"
+        [pageSize]="dataSource.meta.itemsPerPage"
+        [pageSizeOptions]="[5,10,25,100]"
+        (page)="pageEvent = $event; onPaginateChange($event)"
+        showFirstLastButtons>
+    </mat-paginator>
+
+    <button mat-flat-button color="primary" routerLink="/tournaments/add">Dodaj nowy turniej</button>
+</div>

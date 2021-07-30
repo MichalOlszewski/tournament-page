@@ -1,0 +1,45 @@
+<h1 style="text-align: center;"> Register Page</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="container"> 
+
+        <mat-form-field>
+            <input matInput placeholder="Full Name" formControlName="name">
+            <mat-hint *ngIf="registerForm.controls.name.errors">Full name is required</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Username" formControlName="username">
+            <mat-hint *ngIf="registerForm.controls.username.errors">Username is required</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-hint *ngIf="registerForm.controls.email.errors">Email is required</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+            <mat-hint *ngIf="registerForm.controls.password.errors">Password is required</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="password" placeholder="Confirm Password" formControlName="passwordConfirm">
+            <mat-hint *ngIf="registerForm.controls.passwordConfirm.errors">Passwords not matching</mat-hint>
+        </mat-form-field>
+
+
+        <button mat-flat-button color="primary" [disabled]="registerForm.invalid" type="submit">Register</button>
+
+        <div class="errors">
+            <h3 *ngIf="registerForm.invalid">Formularz zawiera następujące błędy:</h3>
+            <ul>
+            <li *ngIf="isEmailWrong">Podany adres email już istnieje w systemie!</li>
+            <li *ngIf="registerForm.controls.password.hasError('passwordInvalid')">Hasło nie zawiera liczby</li> <br>
+            <li *ngIf="registerForm.hasError('passwordsNotMatching')">Hasła nie są identyczne</li>
+            </ul>
+        </div>
+
+    </div>
+</form>
+
+
